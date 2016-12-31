@@ -11,7 +11,7 @@ app.use(express.static('./node_modules/bootstrap/dist'));
 app.use (bodyParser.json());
 
 app.get('/app-bundle.js',
-	browserify('./client/index.jsx', {
+	browserify('./components/index.jsx', {
 		transform: [ [ require('babelify'), { presets: ["es2015", "react"] } ] ]
 	})
 )

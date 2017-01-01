@@ -10,7 +10,7 @@ export default class App extends React.Component {
 	render(){
 		return (
 			<div>
-				<h1>Welcome to the polling center!</h1>
+				<h1>Welcome to the polling centerzzzzdddddddddZ!</h1>
 
 			</div>
 		)

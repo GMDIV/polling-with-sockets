@@ -9,13 +9,15 @@ export default class App extends React.Component {
 		
 		this.state = {
 			status: 'disconnected',
-			data: {}
+			title: ''
 		};
 	}
 
 	componentWillMount() {
 		this.socket = io('http://localhost:3000');
 		this.socket.on('connect', this.connect.bind(this));
+		this.socket.on('disconnect', this.disconnect.bind(this));
+		this.socket.on('welcome', this.welcome.bind(this));
 	}
 
 	connect(){
@@ -25,10 +27,19 @@ export default class App extends React.Component {
 		console.log("the this.state.status is now: ", this.state.status)
 	}
 
+	disconnect(){ 
+		console.log("id", this.socket.id)
+		this.setState({status: 'disconnected'})
+		console.log("the this.state.status is now: ", this.state.status)
+	}
+
+	welcome(serverState){
+		this.setState({title: serverState.title})
+	}
 	render(){
 		return (
 			<div>
-				<Header title="The Header!!" status={this.state.status} />
+				<Header title={this.state.title} status={this.state.status} />
 
 			</div>
 		)

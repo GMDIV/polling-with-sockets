@@ -1,11 +1,14 @@
 import React from 'react';
 import io from 'socket.io-client';
 
+import Header from './Header.jsx';
+
 export default class App extends React.Component {
 	constructor(props) {
 		super(props);
 		
 		this.state = {
+			status: 'disconnected',
 			data: {}
 		};
 	}
@@ -17,13 +20,15 @@ export default class App extends React.Component {
 
 	connect(){
 		console.log("id", this.socket.id)
-		alert("Connected: " + this.socket.id)
+		//alert("Connected: " + this.socket.id)
+		this.setState({status: 'connected'})
+		console.log("the this.state.status is now: ", this.state.status)
 	}
 
 	render(){
 		return (
 			<div>
-				<h1>Welcome to the polling centerzzzzssdddddddddZ!</h1>
+				<Header title="The Header!!" status={this.state.status} />
 
 			</div>
 		)

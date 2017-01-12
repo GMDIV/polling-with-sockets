@@ -1,7 +1,11 @@
 import React from 'react';
 import io from 'socket.io-client';
+import {RouteHandler} from 'react-router';
 
 import Header from './Header.jsx';
+
+//var RouteHandler = Router.RouteHandler; 
+
 
 export default class App extends React.Component {
 	constructor(props) {
@@ -40,7 +44,7 @@ export default class App extends React.Component {
 		return (
 			<div>
 				<Header title={this.state.title} status={this.state.status} />
-
+				<RouteHandler  />
 			</div>
 		)
 	}
